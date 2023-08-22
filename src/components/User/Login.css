@@ -1,0 +1,130 @@
+#login {
+    padding: 4.4rem 15rem;
+}
+#login .container {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    box-shadow: 0.2rem 0.2rem 0.4rem 0.5rem rgb(233, 230, 230);
+}
+
+#login .content {
+    display: flex;
+    align-items: center;
+}
+
+#login .side-content {
+    background-color: rgb(58, 177, 155);
+    background-image: linear-gradient();
+    width: 40%;
+    padding: 19rem 0rem;
+    text-align: center;
+    background-image: linear-gradient(to bottom, rgba(127, 180, 182, 0.52), rgb(58, 177, 155)), url('../../assets/image.jpg');
+}
+
+#login .side-content h1 {
+    font-size: 3rem;
+    color: white;
+    overflow: hidden;
+}
+
+#login .side-content span {
+    position: relative;
+}
+
+#login .side-content span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(136, 198, 190);
+    animation: typing 2s steps(17,end) infinite;
+    border-left: 0.2rem solid white;
+}
+
+@keyframes typing {
+    100% {
+        left: 100%;
+    }
+}
+#login .side-content p{
+    color: rgb(243, 235, 235);
+    font-size: 1.5rem;
+    padding: 1rem 10rem;
+}
+#login .side-content button {
+    background-color: transparent;
+    border: 0.1rem solid white;
+    color: white;
+    border-radius: 3rem;
+    font-size: 1.5rem;
+    padding: 1.5rem 5rem;
+    letter-spacing: 0.2rem;
+    margin-top: 3rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all ;
+}
+#login .side-content button:hover {
+    background-color: white;
+    color: rgb(43, 41, 41);
+}
+
+#login .form-group {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#login .form-group h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: rgb(58, 177, 155);
+}
+
+#login .form-group input {
+    width: 60%;
+    background-color: rgb(243, 243, 243);
+    border: none;
+    margin-bottom: 1rem;
+    opacity: 0.5rem;
+    padding: 2rem;
+}
+#login .form-group input::placeholder {
+    color: rgba(170, 170, 170, 0.6);
+    opacity: 1;
+    font-family: 'FontAwesome';
+    font-size: 1.4rem;
+}
+#login .form-group .icons i {
+    padding: 1.2rem 1.5rem;
+    border: 0.1rem solid rgb(197, 186, 186);
+    border-radius: 5rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+}
+#login .form-group .icons i:hover {
+    background-color: black;
+    color: white;
+}
+#login .form-group p {
+    font-size: 1.2rem;
+    color: rgb(180, 165, 165);
+    margin-bottom: 1rem;
+}
+
+#login .form-group button {
+    background-color: rgb(58, 177, 155);
+    border-radius: 3rem;
+    border: none;
+    padding: 1.5rem 5rem;
+    margin-top: 1rem;
+    color: white;
+    letter-spacing: 0.2rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}

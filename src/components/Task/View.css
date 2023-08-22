@@ -1,0 +1,137 @@
+.header {
+   padding: 1rem 4rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.header h1 {
+   font-size: 3rem;
+   color: rgb(58, 177, 155);
+   text-shadow: 2px 2px 4px rgb(199, 192, 192);
+}
+
+.header .user {
+   padding: 0.5rem 0.8rem;
+   font-size: 1.8rem;
+   color: rgb(58, 177, 155);
+   border-radius: 50%;
+   border: 0.2rem solid rgb(180, 199, 195);
+   /* background-color: rgb(58, 177, 155); */
+}
+
+.header p {
+   font-size: 1.4rem;
+   padding: 0 0.5rem;
+   text-transform: uppercase;
+   color: rgb(122, 112, 112);
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.header input {
+   width: 40%;
+   background-color: #f3f1f1;
+   border-radius: 3rem;
+   border: none;
+   margin-bottom: 1rem;
+   opacity: 0.5rem;
+   padding: 1.5rem;
+}
+
+.header input::placeholder {
+   color: rgba(170, 170, 170, 0.6);
+   opacity: 1;
+   font-size: 1.4rem;
+   font-family: 'FontAwesome';
+}
+
+.profile {
+   display: flex;
+   align-items: center;
+   padding: 0.5rem 3rem;
+   position: relative;
+   cursor: pointer;
+}
+
+.dropdown-menu {
+   display: none;
+   position: absolute;
+   top: 100%;
+   right: 0;
+   background-color: #fff;
+   border: 1px solid #ccc;
+   list-style: none;
+}
+
+.dropdown-menu li {
+   padding: 10px;
+   font-size: 1.2rem;
+}
+
+.profile:hover .dropdown-menu {
+   display: block;
+}
+
+.banner {
+   background-color: rgb(58, 177, 155);
+   padding: 8rem 4rem 1rem;
+   text-align: start;
+   background-image: linear-gradient(to bottom, rgba(127, 180, 182, 0.52), rgb(58, 177, 155)), url('../../assets/image.jpg');
+}
+
+.banner h1 {
+   font-size: 5rem;
+   color: white;
+}
+
+.banner p {
+   color: white;
+   font-size: 1.5rem;
+   padding: 1rem;
+}
+
+.tasks {
+   background-color: white;
+   padding: 2rem 20rem;
+   height: 55vh;
+   overflow: auto;
+   text-align: center;
+}
+
+.tasks li {
+   list-style-type: none;
+   padding: 2rem;
+   background-color: whitesmoke;
+   font-size: 1.4rem;
+   /* border: 0.1rem solid rgb(133, 126, 126); */
+   border-radius: 1rem;
+   font-size: 1.6rem;
+   margin-bottom: 0.5rem;
+   box-shadow: 0.2rem 0.2rem 0.3rem 0.3rem #e6e0e0;
+   display: flex;
+   align-items: start;
+   justify-content: space-between;
+   font-family: 'Courier New', Courier, monospace;
+}
+
+.tasks .icons {
+   display: flex;
+   gap: 1rem;
+}
+
+.tasks i {
+   font-size: 2rem;
+   cursor: pointer;
+}
+
+.tasks button {
+   color: white;
+   font-size: 1.7rem;
+   background-color: rgb(58, 177, 155);
+   padding: 1.5rem;
+   margin-top: 2rem;
+   border-radius: 1.5rem;
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   border: none;
+   text-align: end;
+}
