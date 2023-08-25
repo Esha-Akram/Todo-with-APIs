@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Login.css';
 import { Login_URL } from '../apiUrl/API_URL';
 import swal from 'sweetalert';
@@ -9,8 +9,16 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    
+    const [isLoading, setIsLoading] = useState(false);
+
+    function displayLoading() {
+        setIsLoading(true);
+    }
+    function hideLoading() {
+        setIsLoading(false);
+    }
     function login() {
+        displayLoading();
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -29,6 +37,7 @@ const Login = () => {
         fetch(`${Login_URL}/login`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                hideLoading()
                 if (result.success === true) {
                     Swal.fire(
                         'Great',
@@ -67,9 +76,12 @@ const Login = () => {
                     <div className='side-content'>
                         <h1><span>Hello, New Here!e</span></h1>
                         <p>Enter your personal details and start journey with us</p>
-                        <Link to="/register"><button>Sign Up</button></Link>
+                        <Link to="/registor"><button>Sign Up</button></Link>
                     </div>
                 </div>
+            </div>
+            <div id="loading-overlay" className={isLoading ? 'active' : ''}>
+                    <i className="fa fa-spinner fa-spin"></i>
             </div>
         </div>
 

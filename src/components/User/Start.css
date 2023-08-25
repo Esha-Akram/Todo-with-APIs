@@ -1,0 +1,80 @@
+#started {
+    padding: 0rem 10rem;
+    text-align: center;
+}
+
+#started li {
+    list-style-type: none;
+    text-align: end;
+    padding: 2rem;
+    font-size: 1.7rem;
+    text-shadow: 1px 2px 2px rgb(199, 192, 192);
+}
+
+#started .list {
+    color: rgb(58, 177, 155);
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#started .container {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    padding: 4rem 10rem;
+    box-shadow: 0.2rem 0.2rem 0.4rem 0.5rem rgb(233, 230, 230);
+}
+
+#started .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+}
+
+#started .content h2 {
+    font-size: 2.4rem;
+    text-align: start;
+}
+
+#started .content p {
+    font-size: 1.6rem;
+    text-align: end;
+}
+
+#started .steps {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem;
+}
+
+#started .step {
+    background-color: #F6F6F6;
+    padding: 3rem;
+    margin-right: 1rem;
+}
+
+#started .step button {
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 1rem 1.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+#started .step p {
+    font-size: 1.4rem;
+}
+
+#started .start {
+    background-color: rgb(58, 177, 155);
+    border-radius: 3rem;
+    border: none;
+    padding: 1.5rem 5rem;
+    margin-top: 1rem;
+    color: white;
+    letter-spacing: 0.2rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}

@@ -9,9 +9,16 @@ function Add() {
     const [task, setTask] = useState("");
     const [discription, setDiscription] = useState("");
     const userToken = localStorage.getItem('userToken');
+    const [isLoading, setIsLoading] = useState(false);
     const Navigate = useNavigate();
-
+    function displayLoading() {
+        setIsLoading(true);
+    }
+    function hideLoading() {
+        setIsLoading(false);
+    }
     function add() {
+        displayLoading();
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `JWT ${userToken}`);
         myHeaders.append("Content-Type", "application/json");
@@ -31,6 +38,7 @@ function Add() {
         fetch(`${Add_URL}/addtask`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                hideLoading()
                 if (result.success === true) {
                     Swal.fire(
                         'Great',
@@ -60,6 +68,9 @@ function Add() {
                     <input type="text" name="discription" id="discription" value={discription} onChange={event => setDiscription(event.target.value)} placeholder="Discription" />
                     <button onClick={add}>Save</button>
                 </div>
+            </div>
+            <div id="loading-overlay" className={isLoading ? 'active' : ''}>
+                <i className="fa fa-spinner fa-spin"></i>
             </div>
         </div>
     )

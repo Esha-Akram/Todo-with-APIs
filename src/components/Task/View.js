@@ -12,8 +12,15 @@ function View() {
     const data = localStorage.getItem('userData');
     const userData = JSON.parse(data);
     const userToken = localStorage.getItem('userToken');
+    const [isLoading, setIsLoading] = useState(false);
     const Navigate = useNavigate();
 
+    function displayLoading() {
+        setIsLoading(true);
+    }
+    function hideLoading() {
+        setIsLoading(false);
+    }
     useEffect(() => {
         const intervalId = setInterval(() => {
             setDate(new Date());
@@ -27,7 +34,7 @@ function View() {
 
     function logout() {
         localStorage.removeItem('userToken');
-        Navigate('/');
+        Navigate('/login');
         Swal.fire('You need to login first!')
     }
     function getTask() {
@@ -56,6 +63,7 @@ function View() {
     }
 
     function Complete(taskId) {
+        displayLoading();
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `JWT ${userToken}`);
 
@@ -68,6 +76,7 @@ function View() {
         fetch(`${Update_URL}/updatetask/${taskId}`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                hideLoading()
                 if (result.success === true) {
                     getTask();
                 }
@@ -82,6 +91,7 @@ function View() {
     }
 
     function Delete(taskId) {
+        displayLoading();
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `JWT ${userToken}`);
 
@@ -94,6 +104,7 @@ function View() {
         fetch(`${Delete_URL}/removeTask/${taskId}`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                hideLoading()
                 if (result.success === true) {
                     getTask();
                     Swal.fire('Deleted', result.message, 'success');
@@ -140,6 +151,9 @@ function View() {
                     ))}
                     <Link to='/add'><button>Add Task</button></Link>
                 </div>
+            </div>
+            <div id="loading-overlay" className={isLoading ? 'active' : ''}>
+                <i className="fa fa-spinner fa-spin"></i>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Registor.css';
 import Swal from 'sweetalert2';
 import swal from 'sweetalert';
@@ -9,9 +9,17 @@ const Registor = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const Navigate = useNavigate();
 
+    function displayLoading() {
+        setIsLoading(true);
+    }
+    function hideLoading() {
+        setIsLoading(false);
+    }
     function registor() {
+        displayLoading();
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -31,13 +39,14 @@ const Registor = () => {
         fetch(`${API_URL}/register`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                hideLoading()
                 if (result.success === true) {
                     Swal.fire(
                         'Great',
                         'You are successfully registored!',
                         'success'
                     )
-                    Navigate("/");
+                    Navigate("/login");
                 } else {
                     swal("Error!", result.error.message, "error");
                 }
@@ -54,7 +63,7 @@ const Registor = () => {
                     <div className='side-content'>
                         <h1><span>Welcome Back!s</span></h1>
                         <p>To keep connected with us please login with your personal info</p>
-                        <Link to="/" ><button>Sign In</button></Link>
+                        <Link to="/login" ><button>Sign In</button></Link>
                     </div>
                     <div className='form-group'>
                         <h1>Create Account</h1>
@@ -70,6 +79,9 @@ const Registor = () => {
                         <button onClick={registor}>Sign Up</button>
                     </div>
                 </div>
+            </div>
+            <div id="loading-overlay" className={isLoading ? 'active' : ''}>
+                <i className="fa fa-spinner fa-spin"></i>
             </div>
         </div>
     )
