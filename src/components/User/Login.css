@@ -155,3 +155,34 @@
 #loading-overlay.active {
     display: flex;
 }
+
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 35%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  html {
+    font-size: 35%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  html {
+    font-size: 62.5%;
+  }
+}

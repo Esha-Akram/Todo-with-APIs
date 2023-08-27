@@ -24,7 +24,7 @@ export const Start = () => {
                         </div>
                         <div className='step'>
                             <button>2</button>
-                            <h1>Delete, Complete, Search</h1>
+                            <h1>Delete, Complete</h1>
                             <p>Make sure to done your daily tasks but can delete anytime if you could not complete today,
                                 An extra feature is to search if you want to check quickly</p>
                         </div>

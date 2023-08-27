@@ -34,8 +34,7 @@ function View() {
 
     function logout() {
         localStorage.removeItem('userToken');
-        Navigate('/login');
-        Swal.fire('You need to login first!')
+        Navigate('/');
     }
     function getTask() {
         var myHeaders = new Headers();

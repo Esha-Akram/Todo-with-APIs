@@ -41,7 +41,7 @@ function Add() {
                 hideLoading()
                 if (result.success === true) {
                     Swal.fire(
-                        'Great',
+                        'Added',
                         'Task Added Succesfully!',
                         'success'
                     )
