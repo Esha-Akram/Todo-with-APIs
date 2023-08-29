@@ -1,5 +1,9 @@
 #login {
-    padding: 4.4rem 15rem;
+    padding: 0rem 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
 }
 
 #login .container {
@@ -158,31 +162,43 @@
 
 
 @media only screen and (max-width: 600px) {
-  html {
-    font-size: 35%;
-  }
+    html {
+        font-size: 35%;
+    }
+
+    #login {
+        padding: 0rem 6rem;
+    }
+
+    #login .side-content p {
+        padding: 1rem 2rem;
+    }
+
+    #login .side-content button {
+        padding: 0.8rem 2rem;
+    }
 }
 
 @media only screen and (min-width: 600px) {
-  html {
-    font-size: 35%;
-  }
+    html {
+        font-size: 35%;
+    }
 }
 
 @media only screen and (min-width: 768px) {
-  html {
-    font-size: 45%;
-  }
+    html {
+        font-size: 45%;
+    }
 }
 
 @media only screen and (min-width: 992px) {
-  html {
-    font-size: 50%;
-  }
+    html {
+        font-size: 50%;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
-  html {
-    font-size: 62.5%;
-  }
+    html {
+        font-size: 62.5%;
+    }
 }

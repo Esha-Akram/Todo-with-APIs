@@ -1,26 +1,29 @@
 #registor {
-    padding: 4.4rem 15rem;
+    padding: 0rem 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
 }
 
 #registor .container {
     background-color: white;
-    width: 100%;
-    height: auto;
     box-shadow: 0.2rem 0.2rem 0.4rem 0.5rem rgb(233, 230, 230);
 }
 
 #registor .content {
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 #registor .side-content {
+    background-image: linear-gradient(to bottom, rgba(127, 180, 182, 0.52), rgb(58, 177, 155)), url('../../assets/image.jpg');
     background-color: rgb(58, 177, 155);
     background-image: linear-gradient();
     width: 40%;
     padding: 19rem 0rem;
     text-align: center;
-    background-image: linear-gradient(to bottom, rgba(127, 180, 182, 0.52), rgb(58, 177, 155)), url('../../assets/image.jpg');
 }
 
 #registor .side-content h1 {
@@ -158,31 +161,43 @@
 
 
 @media only screen and (max-width: 600px) {
-  html {
-    font-size: 35%;
-  }
+    html {
+        font-size: 35%;
+    }
+
+    #registor {
+        padding: 0rem 6rem;
+    }
+
+    #registor .side-content p {
+        padding: 1rem 2rem;
+    }
+
+    #registor .side-content button {
+        padding: 0.8rem 2rem;
+    }
 }
 
 @media only screen and (min-width: 600px) {
-  html {
-    font-size: 35%;
-  }
+    html {
+        font-size: 35%;
+    }
 }
 
 @media only screen and (min-width: 768px) {
-  html {
-    font-size: 45%;
-  }
+    html {
+        font-size: 45%;
+    }
 }
 
 @media only screen and (min-width: 992px) {
-  html {
-    font-size: 50%;
-  }
+    html {
+        font-size: 50%;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
-  html {
-    font-size: 62.5%;
-  }
+    html {
+        font-size: 62.5%;
+    }
 }

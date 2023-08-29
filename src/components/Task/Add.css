@@ -1,85 +1,99 @@
 #add {
-    padding: 8rem 30rem;
-    text-align: center;
-    max-width: 100%;
-    max-height: auto;
+  padding: 8rem 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
+
 #add h1 {
-    font-size: 4rem;
-    color:  rgb(58, 177, 155);
+  font-size: 4rem;
+  color: rgb(58, 177, 155);
 }
+
 #add p {
-    font-size: 1.6rem;
-    color: rgb(99, 93, 93);
+  font-size: 1.6rem;
+  color: rgb(99, 93, 93);
 }
+
 #add .container {
-    background-color: white;
-    padding: 10rem 2rem;
-    box-shadow: 0.2rem 0.2rem 0.4rem 0.5rem rgb(233, 230, 230);   
+  background-color: white;
+  padding: 10rem 2rem;
+  text-align: center;
+  box-shadow: 0.2rem 0.2rem 0.4rem 0.5rem rgb(233, 230, 230);
 }
+
 #add .form-group {
-    margin-top: 2rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
+
 #add .form-group input {
-    width: 60%;
-    background-color: rgb(243, 243, 243);
-    border: none;
-    margin-bottom: 1rem;
-    opacity: 0.5rem;
-    padding: 2rem;
+  width: 60%;
+  background-color: rgb(243, 243, 243);
+  border: none;
+  margin-bottom: 1rem;
+  opacity: 0.5rem;
+  padding: 2rem;
 }
+
 #add .form-group label {
-    font-size: 1.7rem;
+  font-size: 1.7rem;
 }
+
 #add .form-group input::placeholder {
-    color: rgba(170, 170, 170, 0.6);
-    opacity: 1;
-    font-family: 'FontAwesome';
-    font-size: 1.4rem;
+  color: rgba(170, 170, 170, 0.6);
+  opacity: 1;
+  font-family: 'FontAwesome';
+  font-size: 1.4rem;
 }
+
 #add .form-group button {
-    background-color: rgb(58, 177, 155);
-    border-radius: 3rem;
-    border: none;
-    padding: 1.5rem 5rem;
-    margin-top: 1rem;
-    color: white;
-    letter-spacing: 0.2rem;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    cursor: pointer;
+  background-color: rgb(58, 177, 155);
+  border-radius: 3rem;
+  border: none;
+  padding: 1.5rem 5rem;
+  margin-top: 1rem;
+  color: white;
+  letter-spacing: 0.2rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 
 @media only screen and (max-width: 600px) {
-    html {
-      font-size: 35%;
-    }
+  html {
+    font-size: 35%;
   }
-  
-  @media only screen and (min-width: 600px) {
-    html {
-      font-size: 35%;
-    }
+
+  #add {
+    padding: 7rem 7rem;
   }
-  
-  @media only screen and (min-width: 768px) {
-    html {
-      font-size: 45%;
-    }
+}
+
+@media only screen and (min-width: 600px) {
+  html {
+    font-size: 35%;
   }
-  
-  @media only screen and (min-width: 992px) {
-    html {
-      font-size: 50%;
-    }
+}
+
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 45%;
   }
-  
-  @media only screen and (min-width: 1200px) {
-    html {
-      font-size: 62.5%;
-    }
+}
+
+@media only screen and (min-width: 992px) {
+  html {
+    font-size: 50%;
   }
+}
+
+@media only screen and (min-width: 1200px) {
+  html {
+    font-size: 62.5%;
+  }
+}

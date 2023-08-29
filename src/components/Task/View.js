@@ -21,6 +21,9 @@ function View() {
     function hideLoading() {
         setIsLoading(false);
     }
+
+    const searched = userTask.filter((task) => task.title.toLowerCase().includes(searchInput.toLowerCase()));
+
     useEffect(() => {
         const intervalId = setInterval(() => {
             setDate(new Date());
@@ -138,17 +141,20 @@ function View() {
                     <p>{date.toLocaleString('en-US')}</p>
                 </div>
                 <div className='tasks'>
-                    {userTask.map((taskObj, index) => (
-                        <li key={index}>
-                            <i className={`fa fa-square-o complete ${taskObj.completed ? 'fa fa-check-square completed' : ''}`}
-                                onClick={() => Complete(taskObj._id)} > {taskObj.title} </i>
-                            <div className='icons'>
-                                <i className='fa fa-pencil' ></i>
-                                <i className='fa fa-trash' onClick={() => Delete(taskObj._id)}></i>
-                            </div>
+                    {searched.map((taskObj, taskId) => (
+                        <li key={taskId}>
+                            <i className={`fa fa-square-o complete ${taskObj.completed ? 'fa fa-check-square' : ''}`}
+                                onClick={() => Complete(taskObj._id)}></i>
+                            <span className={`${taskObj.completed ? 'completed' : ''}`}>{taskObj.title}</span>
+                            {/* <div className='icons'> */}
+                            <i className='fa fa-trash' onClick={() => Delete(taskObj._id)}></i>
+                            {/* </div> */}
                         </li>
                     ))}
                     <Link to='/add'><button>Add Task</button></Link>
+                </div>
+                <div className='footer'>
+                        <p>Create by @Esha Akram</p>
                 </div>
             </div>
             <div id="loading-overlay" className={isLoading ? 'active' : ''}>

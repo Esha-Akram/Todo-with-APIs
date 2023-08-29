@@ -34,6 +34,7 @@
    border: none;
    opacity: 0.5rem;
    padding: 1.5rem;
+   outline: none;
 }
 
 .header input::placeholder {
@@ -91,8 +92,8 @@
 .tasks {
    background-color: white;
    padding: 2rem 30rem;
-   height: 59vh;
-   overflow: auto;
+   height: 100vh;
+   overflow: hidden;
    text-align: center;
 }
 
@@ -133,11 +134,33 @@
    border: none;
    text-align: end;
 }
+
+.tasks input {
+   border: none;
+   font-size: 1.6rem;
+   text-align: center;
+   background-color: transparent;
+   border-bottom: 0.15rem solid rgb(29, 25, 25);
+   font-family: 'Courier New', Courier, monospace;
+   outline: 0;
+}
+
 .completed {
    text-decoration: line-through;
- }
- 
- #loading-overlay {
+}
+
+.footer {
+   background-color: rgb(58, 177, 155);
+   color: white;
+   padding: 2rem;
+   font-size: 1.5rem;
+   text-align: center;
+   position: relative;
+   width: 100%;
+   bottom: 0;
+}
+
+#loading-overlay {
    position: fixed;
    top: 0;
    left: 0;
@@ -157,31 +180,35 @@
 
 
 @media only screen and (max-width: 600px) {
-  html {
-    font-size: 35%;
-  }
+   html {
+      font-size: 35%;
+   }
+
+   .tasks {
+      padding: 2rem 10rem;
+   }
 }
 
 @media only screen and (min-width: 600px) {
-  html {
-    font-size: 35%;
-  }
+   html {
+      font-size: 35%;
+   }
 }
 
 @media only screen and (min-width: 768px) {
-  html {
-    font-size: 45%;
-  }
+   html {
+      font-size: 45%;
+   }
 }
 
 @media only screen and (min-width: 992px) {
-  html {
-    font-size: 50%;
-  }
+   html {
+      font-size: 50%;
+   }
 }
 
 @media only screen and (min-width: 1200px) {
-  html {
-    font-size: 62.5%;
-  }
+   html {
+      font-size: 62.5%;
+   }
 }
