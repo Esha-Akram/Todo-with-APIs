@@ -102,7 +102,6 @@
    padding: 2rem;
    background-color: whitesmoke;
    font-size: 1.4rem;
-   /* border: 0.1rem solid rgb(133, 126, 126); */
    border-radius: 1rem;
    font-size: 1.6rem;
    margin-bottom: 1rem;
@@ -111,11 +110,6 @@
    align-items: start;
    justify-content: space-between;
    font-family: 'Courier New', Courier, monospace;
-}
-
-.tasks .icons {
-   display: flex;
-   gap: 1rem;
 }
 
 .tasks i {

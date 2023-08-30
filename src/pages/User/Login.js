@@ -1,43 +1,31 @@
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import './Login.css';
-import { Login_URL } from '../apiUrl/API_URL';
+import { Login_URL } from '../../components/apiUrl/API_URL';
 import swal from 'sweetalert';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import useFetch from '../../components/usefetch';
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
 
-    function displayLoading() {
-        setIsLoading(true);
-    }
-    function hideLoading() {
-        setIsLoading(false);
-    }
-    function login() {
-        displayLoading();
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
+    var requestOptions = {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
             "email": email,
             "password": password
-        });
+        }),
+        redirect: 'follow'
+    };
 
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
+    const { fetchApi, isLoading } = useFetch(`${Login_URL}/login`, requestOptions);
 
-        fetch(`${Login_URL}/login`, requestOptions)
-            .then(response => response.json())
+    function login() {
+        fetchApi()
             .then(result => {
-                hideLoading()
                 if (result.success === true) {
                     Swal.fire(
                         'Great',
@@ -81,7 +69,7 @@ const Login = () => {
                 </div>
             </div>
             <div id="loading-overlay" className={isLoading ? 'active' : ''}>
-                    <i className="fa fa-spinner fa-spin"></i>
+                <i className="fa fa-spinner fa-spin"></i>
             </div>
         </div>
 

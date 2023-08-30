@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import './View.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { Delete_URL, Get_URL, Update_URL } from '../apiUrl/API_URL';
+import { Delete_URL, Get_URL, Update_URL } from '../../components/apiUrl/API_URL';
 import swal from 'sweetalert';
 import Swal from 'sweetalert2';
+import useFetch from '../../components/usefetch';
 
 function View() {
     const [searchInput, setSearch] = useState("");
@@ -12,15 +13,8 @@ function View() {
     const data = localStorage.getItem('userData');
     const userData = JSON.parse(data);
     const userToken = localStorage.getItem('userToken');
-    const [isLoading, setIsLoading] = useState(false);
+    const [Loading, setLoading] = useState(false);
     const Navigate = useNavigate();
-
-    function displayLoading() {
-        setIsLoading(true);
-    }
-    function hideLoading() {
-        setIsLoading(false);
-    }
 
     const searched = userTask.filter((task) => task.title.toLowerCase().includes(searchInput.toLowerCase()));
 
@@ -39,18 +33,16 @@ function View() {
         localStorage.removeItem('userToken');
         Navigate('/');
     }
+
+    var requestOptions = {
+        method: 'GET',
+        headers: { "Authorization": `JWT ${userToken}` },
+        redirect: 'follow'
+    };
+    const { fetchApi, isLoading } = useFetch(`${Get_URL}/me`, requestOptions);
+
     function getTask() {
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `JWT ${userToken}`);
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        fetch(`${Get_URL}/me`, requestOptions)
-            .then(response => response.json())
+        fetchApi()
             .then(result => {
                 if (result.success === true) {
                     setUserTask(result.tasks);
@@ -65,7 +57,7 @@ function View() {
     }
 
     function Complete(taskId) {
-        displayLoading();
+        setLoading(true)
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `JWT ${userToken}`);
 
@@ -78,7 +70,7 @@ function View() {
         fetch(`${Update_URL}/updatetask/${taskId}`, requestOptions)
             .then(response => response.json())
             .then(result => {
-                hideLoading()
+                setLoading(false)
                 if (result.success === true) {
                     getTask();
                 }
@@ -93,7 +85,7 @@ function View() {
     }
 
     function Delete(taskId) {
-        displayLoading();
+        setLoading(true)
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `JWT ${userToken}`);
 
@@ -106,7 +98,7 @@ function View() {
         fetch(`${Delete_URL}/removeTask/${taskId}`, requestOptions)
             .then(response => response.json())
             .then(result => {
-                hideLoading()
+                setLoading(false)
                 if (result.success === true) {
                     getTask();
                     Swal.fire('Deleted', result.message, 'success');
@@ -154,10 +146,13 @@ function View() {
                     <Link to='/add'><button>Add Task</button></Link>
                 </div>
                 <div className='footer'>
-                        <p>Create by @Esha Akram</p>
+                    <p>Create by @Esha Akram</p>
                 </div>
             </div>
             <div id="loading-overlay" className={isLoading ? 'active' : ''}>
+                <i className="fa fa-spinner fa-spin"></i>
+            </div>
+            <div id="loading-overlay" className={Loading ? 'active' : ''}>
                 <i className="fa fa-spinner fa-spin"></i>
             </div>
         </div>

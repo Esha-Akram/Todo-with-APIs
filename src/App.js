@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Registor from './components/User/Registor';
-import Login from './components/User/Login';
-import View from './components/Task/View';
-import Add from './components/Task/Add';
-import { AuthRoute } from './components/Auth';
-import { Start } from './components/User/Start';
+import Registor from './pages/User/Registor';
+import Login from './pages/User/Login';
+import View from './pages/Task/View';
+import Add from './pages/Task/Add';
+import { AuthRoute } from './routes/Auth';
+import { Start } from './pages/User/Start';
 
 function App() {
   return (

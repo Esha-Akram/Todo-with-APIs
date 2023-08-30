@@ -1,49 +1,37 @@
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import './Registor.css';
 import Swal from 'sweetalert2';
 import swal from 'sweetalert';
-import { API_URL } from '../apiUrl/API_URL';
+import './Registor.css';
+import { API_URL } from '../../components/apiUrl/API_URL';
+import useFetch from '../../components/usefetch';
 
 const Registor = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
     const Navigate = useNavigate();
 
-    function displayLoading() {
-        setIsLoading(true);
-    }
-    function hideLoading() {
-        setIsLoading(false);
-    }
-    function registor() {
-        displayLoading();
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
+    const requestOptions = {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
             "name": name,
             "email": email,
             "password": password
-        });
+        }),
+        redirect: 'follow'
+    };
 
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
+    const { fetchApi, isLoading } = useFetch(`${API_URL}/register`, requestOptions);
 
-        fetch(`${API_URL}/register`, requestOptions)
-            .then(response => response.json())
+    const registor = () => {
+        fetchApi()
             .then(result => {
-                hideLoading()
                 if (result.success === true) {
                     Swal.fire(
                         'Great',
-                        'You are successfully registored!',
+                        'You are successfully registered!',
                         'success'
                     )
                     Navigate("/login");
@@ -55,7 +43,7 @@ const Registor = () => {
                 console.log('error', error.message)
                 swal(error.message, "Internet Server Down...");
             });
-    }
+    };
     return (
         <div id='registor'>
             <div className='container'>
@@ -76,7 +64,7 @@ const Registor = () => {
                         <input type='text' id='name' name='name' onChange={event => setName(event.target.value)} placeholder='&#xF007;  Name' />
                         <input type='text' id='email' name='email' onChange={event => setEmail(event.target.value)} placeholder='&#xf0e0;  Email' />
                         <input type='text' id='password' name='password' onChange={event => setPassword(event.target.value)} placeholder='&#xf023;  Password' />
-                        <button onClick={registor}>Sign Up</button>
+                        <button onClick={() => registor()}>Sign Up</button>
                     </div>
                 </div>
             </div>

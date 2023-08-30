@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Add.css';
-import { Add_URL } from '../apiUrl/API_URL';
+import { Add_URL } from '../../components/apiUrl/API_URL';
 import Swal from 'sweetalert2';
 import swal from 'sweetalert';
 
