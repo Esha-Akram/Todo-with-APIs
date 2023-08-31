@@ -6,10 +6,9 @@ export const Start = () => {
     return (
         <>
             <motion.div id="started"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                initial={{ x: 0, opacity: 0 }}
+                animate={{ x: -20, opacity: 1 }}
+                transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}
             >
                 <li><Link to="/login" className='list'>Login</Link></li>
                 <div className='container'>

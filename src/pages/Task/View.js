@@ -13,7 +13,6 @@ function View() {
     const data = localStorage.getItem('userData');
     const userData = JSON.parse(data);
     const userToken = localStorage.getItem('userToken');
-    const [Loading, setLoading] = useState(false);
     const Navigate = useNavigate();
 
     const searched = userTask.filter((task) => task.title.toLowerCase().includes(searchInput.toLowerCase()));
@@ -57,20 +56,15 @@ function View() {
     }
 
     function Complete(taskId) {
-        setLoading(true)
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `JWT ${userToken}`);
-
+        const updateUrl = `${Update_URL}/updatetask/${taskId}`
         var requestOptions = {
             method: 'PUT',
-            headers: myHeaders,
+            headers: { "Authorization": `JWT ${userToken}` },
             redirect: 'follow'
         };
 
-        fetch(`${Update_URL}/updatetask/${taskId}`, requestOptions)
-            .then(response => response.json())
+        fetchApi(updateUrl, requestOptions)
             .then(result => {
-                setLoading(false)
                 if (result.success === true) {
                     getTask();
                 }
@@ -84,20 +78,16 @@ function View() {
     }
 
     function Delete(taskId) {
-        setLoading(true)
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `JWT ${userToken}`);
+        const deleteUrl = `${Delete_URL}/removeTask/${taskId}`;
 
         var requestOptions = {
             method: 'DELETE',
-            headers: myHeaders,
+            headers: { "Authorization": `JWT ${userToken}` },
             redirect: 'follow'
         };
 
-        fetch(`${Delete_URL}/removeTask/${taskId}`, requestOptions)
-            .then(response => response.json())
+        fetchApi(deleteUrl, requestOptions)
             .then(result => {
-                setLoading(false)
                 if (result.success === true) {
                     getTask();
                     Swal.fire('Deleted', result.message, 'success');
@@ -147,9 +137,6 @@ function View() {
                 </div>
             </div>
             <div id="loading-overlay" className={isLoading ? 'active' : ''}>
-                <i className="fa fa-spinner fa-spin"></i>
-            </div>
-            <div id="loading-overlay" className={Loading ? 'active' : ''}>
                 <i className="fa fa-spinner fa-spin"></i>
             </div>
         </div>
