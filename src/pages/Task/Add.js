@@ -5,6 +5,7 @@ import { Add_URL } from '../../components/apiUrl/API_URL';
 import Swal from 'sweetalert2';
 import swal from 'sweetalert';
 import useFetch from "../../components/usefetch";
+import { motion } from "framer-motion";
 
 function Add() {
     const [task, setTask] = useState("");
@@ -51,7 +52,11 @@ function Add() {
     }
 
     return (
-        <div id="add">
+        <motion.div id="add"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}
+        >
             <div className="container">
                 <h1>Add Task</h1>
                 <p>Set your daily goals</p>
@@ -64,7 +69,7 @@ function Add() {
             <div id="loading-overlay" className={isLoading ? 'active' : ''}>
                 <i className="fa fa-spinner fa-spin"></i>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

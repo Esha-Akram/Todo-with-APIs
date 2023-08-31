@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom';
 import './Start.css';
+import { motion } from "framer-motion";
 
 export const Start = () => {
     return (
         <>
-            <div id="started">
+            <motion.div id="started"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+            >
                 <li><Link to="/login" className='list'>Login</Link></li>
                 <div className='container'>
                     <div className='content'>
@@ -31,7 +37,7 @@ export const Start = () => {
                     </div>
                     <Link to="/registor"><button className='start'>Get Started</button></Link>
                 </div>
-            </div>
+            </motion.div>
 
         </>
     )

@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import './Registor.css';
 import { API_URL } from '../../components/apiUrl/API_URL';
 import useFetch from '../../components/usefetch';
+import { motion } from "framer-motion";
 
 const Registor = () => {
     const [name, setName] = useState("");
@@ -45,7 +46,11 @@ const Registor = () => {
             });
     };
     return (
-        <div id='registor'>
+        <motion.div id='registor'
+            initial={{ x: 0, opacity: 0 }}
+            animate={{ x: -20, opacity: 1 }}
+            transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}
+        >
             <div className='container'>
                 <div className='content'>
                     <div className='side-content'>
@@ -71,7 +76,7 @@ const Registor = () => {
             <div id="loading-overlay" className={isLoading ? 'active' : ''}>
                 <i className="fa fa-spinner fa-spin"></i>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

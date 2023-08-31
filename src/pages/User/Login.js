@@ -5,6 +5,7 @@ import { Login_URL } from '../../components/apiUrl/API_URL';
 import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import useFetch from '../../components/usefetch';
+import { motion } from "framer-motion";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -46,7 +47,11 @@ const Login = () => {
     }
 
     return (
-        <div id='login'>
+        <motion.div id='login'
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}
+        >
             <div className='container'>
                 <div className='content'>
                     <div className='form-group'>
@@ -71,7 +76,7 @@ const Login = () => {
             <div id="loading-overlay" className={isLoading ? 'active' : ''}>
                 <i className="fa fa-spinner fa-spin"></i>
             </div>
-        </div>
+        </motion.div>
 
     )
 }
