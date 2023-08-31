@@ -4,41 +4,33 @@ import './Add.css';
 import { Add_URL } from '../../components/apiUrl/API_URL';
 import Swal from 'sweetalert2';
 import swal from 'sweetalert';
+import useFetch from "../../components/usefetch";
 
 function Add() {
     const [task, setTask] = useState("");
     const [discription, setDiscription] = useState("");
     const userToken = localStorage.getItem('userToken');
-    const [isLoading, setIsLoading] = useState(false);
     const Navigate = useNavigate();
-    function displayLoading() {
-        setIsLoading(true);
-    }
-    function hideLoading() {
-        setIsLoading(false);
-    }
-    function add() {
-        displayLoading();
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `JWT ${userToken}`);
-        myHeaders.append("Content-Type", "application/json");
 
-        var raw = JSON.stringify({
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `JWT ${userToken}`);
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify({
             "title": task,
             "description": discription
-        });
+        }),
+        redirect: 'follow'
+    };
 
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
+    const { fetchApi, isLoading } = useFetch(`${Add_URL}/addtask`, requestOptions);
 
-        fetch(`${Add_URL}/addtask`, requestOptions)
-            .then(response => response.json())
+    function add() {
+        fetchApi()
             .then(result => {
-                hideLoading()
                 if (result.success === true) {
                     Swal.fire(
                         'Added',

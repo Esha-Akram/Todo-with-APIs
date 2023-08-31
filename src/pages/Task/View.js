@@ -79,8 +79,7 @@ function View() {
                 }
             })
             .catch(error => {
-                console.log('error', error);
-                swal('Error', 'An error occurred while deleting the task.', 'error');
+                swal(error.message, "Internet Server Down...");
             });
     }
 
@@ -109,7 +108,7 @@ function View() {
 
             })
             .catch(error => {
-                swal('Error', 'An error occurred while deleting the task.', 'error');
+                swal(error.message, "Internet Server Down...");
             });
     }
     return (
@@ -138,9 +137,7 @@ function View() {
                             <i className={`fa fa-square-o complete ${taskObj.completed ? 'fa fa-check-square' : ''}`}
                                 onClick={() => Complete(taskObj._id)}></i>
                             <span className={`${taskObj.completed ? 'completed' : ''}`}>{taskObj.title}</span>
-                            {/* <div className='icons'> */}
                             <i className='fa fa-trash' onClick={() => Delete(taskObj._id)}></i>
-                            {/* </div> */}
                         </li>
                     ))}
                     <Link to='/add'><button>Add Task</button></Link>
