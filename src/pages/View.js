@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './View.css';
 import { Link, useNavigate } from 'react-router-dom';
-import useCustomeHook from '../../components/apiFunctions';
+import useCustomeHook from '../traits/apiFunctions';
 
 function View(props) {
     const [date, setDate] = useState(new Date());
@@ -58,6 +58,7 @@ function View(props) {
                                 onClick={() => Complete(task._id)}></i>
                             <span className={`${task.completed ? 'completed' : ''}`}> {task.title} </span>
                             <i className='fa fa-trash' onClick={() => Delete(task._id)}></i>
+                            <li>{task.createdAt}</li>
                         </li>
                     ))}
                     <Link to='/add'><button>Add Task</button></Link>

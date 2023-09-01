@@ -4,7 +4,7 @@ import Registor from '../pages/User/Registor';
 import Login from '../pages/User/Login';
 import View from '../pages/Task/View';
 import Add from '../pages/Task/Add';
-import { AuthRoute } from '../routes/Auth';
+import { AuthRoute } from './Auth';
 import { Start } from '../pages/User/Start';
 import { AnimatePresence } from "framer-motion";
 

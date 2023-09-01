@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Reg_URL, Login_URL, GetTask_URL, Delete_URL, Complete_URL, Add_URL } from './API_URL';
+import { API_URL } from '../config';
 import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +28,7 @@ function useCustomeHook() {
             }),
             redirect: 'follow'
         };
-        return fetch(`${Reg_URL}/register`, requestOptions)
+        return fetch(`${API_URL}/register`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 setIsLoading(false);
@@ -61,7 +61,7 @@ function useCustomeHook() {
             redirect: 'follow'
         };
 
-        return fetch(`${Login_URL}/login`, requestOptions)
+        return fetch(`${API_URL}/login`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 setIsLoading(false);
@@ -96,7 +96,7 @@ function useCustomeHook() {
             redirect: 'follow'
         };
 
-        return fetch(`${GetTask_URL}/me`, requestOptions)
+        return fetch(`${API_URL}/me`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 setIsLoading(false);
@@ -123,7 +123,7 @@ function useCustomeHook() {
             redirect: 'follow'
         };
 
-        return fetch(`${Complete_URL}/updatetask/${taskId}`, requestOptions)
+        return fetch(`${API_URL}/updatetask/${taskId}`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 setIsLoading(false);
@@ -150,7 +150,7 @@ function useCustomeHook() {
             redirect: 'follow'
         };
 
-        return fetch(`${Delete_URL}/removeTask/${taskId}`, requestOptions)
+        return fetch(`${API_URL}/removeTask/${taskId}`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 setIsLoading(false);
@@ -184,7 +184,7 @@ function useCustomeHook() {
             redirect: 'follow'
         };
 
-        return fetch(`${Add_URL}/addtask`, requestOptions)
+        return fetch(`${API_URL}/addtask`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 setIsLoading(false);

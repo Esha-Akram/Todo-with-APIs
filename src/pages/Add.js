@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './Add.css';
 import { motion } from "framer-motion";
-import useCustomeHook from "../../components/apiFunctions";
+import useCustomeHook from "../traits/apiFunctions";
 
 function Add() {
 
