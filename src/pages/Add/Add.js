@@ -1,5 +1,4 @@
-import { useState } from "react";
-import './styleComponents/Add.css';
+import './Add.css';
 import { motion } from "framer-motion";
 import useCustomeHook from "../../traits/apiFunctions";
 
