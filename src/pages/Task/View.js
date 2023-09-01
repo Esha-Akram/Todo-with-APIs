@@ -35,7 +35,8 @@ function View(props) {
             <div className="container">
                 <div className="header">
                     <h1>TODO APP</h1>
-                    <input type='text' name='search' id='search' value={searchInput} placeholder='&#xF002; Search..' onChange={event => setSearch(event.target.value)} />
+                    <input type='text' name='search' id='search' value={searchInput} placeholder='&#xF002; Search..'
+                        onChange={event => setSearch(event.target.value)} />
                     <div className='profile'>
                         <i className='fa fa-user user'></i>
                         <p>{userData ? userData.name : ""}</p>
@@ -51,13 +52,12 @@ function View(props) {
                     <p>{date.toLocaleString('en-US')}</p>
                 </div>
                 <div className='tasks'>
-                    {searched.map((taskObj, taskId) => (
+                    {searched.map((task, taskId) => (
                         <li key={taskId}>
-
-                            <i className={`fa fa-square-o complete ${taskObj.completed ? 'fa fa-check-square' : ''}`}
-                                onClick={() => Complete(taskObj._id)}></i>
-                            <span className={`${taskObj.completed ? 'completed' : ''}`}>{taskObj.title}</span>
-                            <i className='fa fa-trash' onClick={() => Delete(taskObj._id)}></i>
+                            <i className={`fa fa-square-o ${task.completed ? 'fa fa-check-square' : ''}`}
+                                onClick={() => Complete(task._id)}></i>
+                            <span className={`${task.completed ? 'completed' : ''}`}> {task.title} </span>
+                            <i className='fa fa-trash' onClick={() => Delete(task._id)}></i>
                         </li>
                     ))}
                     <Link to='/add'><button>Add Task</button></Link>

@@ -10,7 +10,7 @@
 #started li {
   list-style-type: none;
   text-align: end;
-  padding: 2rem;
+  padding-bottom: 1.5rem;
   font-size: 1.7rem;
   text-shadow: 1px 2px 2px rgb(199, 192, 192);
 }
