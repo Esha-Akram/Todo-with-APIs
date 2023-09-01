@@ -1,11 +1,11 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Registor from '../pages/Registor/Registor';
-import Login from '../pages/Login/Login';
-import View from '../pages/View/View';
-import Add from '../pages/Add/Add';
+import Registor from '../pages/RegistorUser/Registor';
+import Login from '../pages/LoginUser/Login';
+import View from '../pages/Dashboard/View';
+import Add from '../pages/AddTask/Add';
 import { AuthRoute } from './Auth';
-import { Start } from '../pages/Start/Start';
+import { Start } from '../pages/GetStart/Start';
 import { AnimatePresence } from "framer-motion";
 
 function AnimatedRoutes() {
