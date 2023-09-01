@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './View.css';
 import { Link, useNavigate } from 'react-router-dom';
-import useCustomeHook from '../traits/apiFunctions';
+import useCustomeHook from '../../traits/apiFunctions';
 
 function View(props) {
     const [date, setDate] = useState(new Date());

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import './Registor.css';
 import { motion } from "framer-motion";
-import useCustomeHook from '../traits/apiFunctions';
+import useCustomeHook from '../../traits/apiFunctions';
 
 const Registor = () => {
 
