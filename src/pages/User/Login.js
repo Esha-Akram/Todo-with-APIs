@@ -1,50 +1,10 @@
-import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Login.css';
-import { Login_URL } from '../../components/apiUrl/API_URL';
-import swal from 'sweetalert';
-import Swal from 'sweetalert2';
-import useFetch from '../../components/usefetch';
 import { motion } from "framer-motion";
+import useCustomeHook from '../../components/apiFunctions';
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
-
-    var requestOptions = {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            "email": email,
-            "password": password
-        }),
-        redirect: 'follow'
-    };
-
-    const { fetchApi, isLoading } = useFetch(`${Login_URL}/login`, requestOptions);
-
-    function login() {
-        fetchApi()
-            .then(result => {
-                if (result.success === true) {
-                    Swal.fire(
-                        'Great',
-                        'You are successfully login!',
-                        'success'
-                    )
-                    localStorage.setItem('userToken', result.token);
-                    localStorage.setItem('userData', JSON.stringify(result.user));
-                    navigate("/view");
-                }
-                else {
-                    swal("Error!", result.error.message, "error");
-                }
-            })
-            .catch(error => {
-                swal(error.message, "Internet Server Down...");
-            });
-    }
+    const {login, isLoading, email, password, setEmail, setPassword } = useCustomeHook();
 
     return (
         <motion.div id='login'

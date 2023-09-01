@@ -19,10 +19,10 @@ function AnimatedRoutes() {
                     <Route index element={<Start />} />
                     <Route path='/login' element={<Login />} />
                     <Route path="/registor" element={<Registor />} />
-                    {/* <Route element={<AuthRoute />}> */}
+                    <Route element={<AuthRoute />}>
                         <Route path="/view" element={<View />} />
                         <Route path="/add" element={<Add />} />
-                    {/* </Route> */}
+                    </Route>
                 </Route>
             </Routes>
         </AnimatePresence>

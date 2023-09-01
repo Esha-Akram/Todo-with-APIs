@@ -1,50 +1,12 @@
-import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
-import swal from 'sweetalert';
+import { Link } from "react-router-dom";
 import './Registor.css';
-import { API_URL } from '../../components/apiUrl/API_URL';
-import useFetch from '../../components/usefetch';
 import { motion } from "framer-motion";
+import useCustomeHook from '../../components/apiFunctions';
 
 const Registor = () => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const Navigate = useNavigate();
 
-    const requestOptions = {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            "name": name,
-            "email": email,
-            "password": password
-        }),
-        redirect: 'follow'
-    };
+    const { registor, isLoading, setName, setPassword, setEmail } = useCustomeHook();
 
-    const { fetchApi, isLoading } = useFetch(`${API_URL}/register`, requestOptions);
-
-    const registor = () => {
-        fetchApi()
-            .then(result => {
-                if (result.success === true) {
-                    Swal.fire(
-                        'Great',
-                        'You are successfully registered!',
-                        'success'
-                    )
-                    Navigate("/login");
-                } else {
-                    swal("Error!", result.error.message, "error");
-                }
-            })
-            .catch(error => {
-                console.log('error', error.message)
-                swal(error.message, "Internet Server Down...");
-            });
-    };
     return (
         <motion.div id='registor'
             initial={{ x: 0, opacity: 0 }}
