@@ -57,8 +57,8 @@ function View(props) {
                             <i className={`fa fa-square-o ${task.completed ? 'fa fa-check-square' : ''}`}
                                 onClick={() => Complete(task._id)}></i>
                             <span className={`${task.completed ? 'completed' : ''}`}> {task.title} </span>
+                            {/* <p>{task.createdAt}</p> */}
                             <i className='fa fa-trash' onClick={() => Delete(task._id)}></i>
-                            <li>{task.createdAt}</li>
                         </li>
                     ))}
                     <Link to='/add'><button>Add Task</button></Link>
